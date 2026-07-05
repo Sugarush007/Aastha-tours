@@ -307,8 +307,11 @@ button {
 
 .card img {
   width: 100%;
-  height: 240px;
-  object-fit: cover;
+  height: auto;
+  display: block;
+  object-fit: contain; /* Keeps the whole image visible without clipping */
+  background-color: #f1f5f9; /* Soft background fill for blank spaces if images differ in size */
+  aspect-ratio: 4 / 3; /* Maintains a premium landscape proportion automatically */
 }
 
 .card-body {
@@ -745,4 +748,145 @@ button {
     flex-direction: column;
     gap: 0.8rem;
   }
+}
+
+/* EXTENDED PACKAGES ITINERARY STYLING */
+.tagline {
+  font-style: italic;
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 0.6rem;
+}
+
+.routes {
+  font-size: 0.9rem;
+  color: var(--slate-navy);
+  margin-bottom: 0.8rem;
+}
+
+.itinerary-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+  margin: 1rem 0;
+  padding: 0.5rem 0;
+  border-top: 1px dashed rgba(226, 232, 240, 0.8);
+  border-bottom: 1px dashed rgba(226, 232, 240, 0.8);
+}
+
+.itinerary-meta span {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-main);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.itinerary-meta span i {
+  color: var(--champagne-gold);
+}
+
+.inclusions {
+  list-style: none;
+  margin-bottom: 1.2rem;
+}
+
+.inclusions li {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin: 0.4rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.inclusions li i {
+  color: #10b981; /* Soft green checkmark icon */
+  font-size: 0.8rem;
+}
+
+/* ==========================================================================
+   POP-UP BOOKING MODAL STYLES
+   ========================================================================== */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 41, 59, 0.6); /* Soft blurred overlay backdrop */
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--card-white);
+  padding: 2.5rem;
+  border-radius: var(--border-radius);
+  max-width: 500px;
+  width: 90%;
+  position: relative;
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.modal-overlay.active .modal-content {
+  transform: scale(1);
+}
+
+.modal-content h3 {
+  font-size: 1.5rem;
+  color: var(--slate-navy);
+  margin-bottom: 0.4rem;
+  font-weight: 600;
+}
+
+.modal-content p {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.close-modal-btn {
+  position: absolute;
+  top: 1rem;
+  right: 1.2rem;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  line-height: 1;
+}
+
+.close-modal-btn:hover {
+  color: var(--slate-navy);
+}
+
+/* Ensure card layout maintains standard flex box columns */
+.card-body {
+  display: flex;
+  flex-direction: column;
+}
+
+.card-btn {
+  margin-top: auto; /* Aligns all buttons uniformly at the card bottoms */
+  text-align: center;
+  padding: 0.65rem 1.5rem;
+  font-size: 0.9rem;
+  width: 100%;
+  border: none;
 }
